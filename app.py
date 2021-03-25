@@ -27,14 +27,14 @@ class ChatApp:
 
         line = Label(self.window, width=450, bg=frontColor) #text space
         line.place(relwidth=1, rely=0.07, relheight=0.012)
-        self.text_widget = Text(self.window, width=20, height=2, bg=frontColorR, fg=lettercolor,
-                                font=letterF, padx=5, pady= 5)
-        self.text_widget.place(relheight=0.745, relwidth=1, rely=0.08)
-        self.text_widget.configure(cursor='arrow', state=DISABLED)
+        self.textw = Text(self.window, width=20, height=2, bg=frontColorR, fg=lettercolor,
+                                font=letterF, padx=5, pady= 5)  #
+        self.textw.place(relheight=0.745, relwidth=1, rely=0.08)
+        self.textw.configure(cursor='arrow', state=DISABLED)
 
-        scrollbar = Scrollbar(self.text_widget)  #create scrollbar
+        scrollbar = Scrollbar(self.textw)  #create scrollbar
         scrollbar.place(relheight=1, relx=0.974)
-        scrollbar.configure(command=self.text_widget.yview)
+        scrollbar.configure(command=self.textw.yview)
 
         bottonL = Label(self.window, bg=frontColor, height=80)
         bottonL.place(relwidth=1, rely=0.825)
@@ -52,16 +52,16 @@ class ChatApp:
             return
         self.entermsg.delete(0, END)
         msgs = f"{sender}: {msg}\n\n"
-        self.text_widget.configure(state=NORMAL)
-        self.text_widget.insert(END, msgs)
-        self.text_widget.configure(state=DISABLED)
+        self.textw.configure(state=NORMAL)
+        self.textw.insert(END, msgs)
+        self.textw.configure(state=DISABLED)
 
         msgr = f"{bot}: {get_response(msg)}\n\n" #Insert bot message
-        self.text_widget.configure(state=NORMAL)
-        self.text_widget.insert(END, msgr)
-        self.text_widget.configure(state=DISABLED)
+        self.textw.configure(state=NORMAL)
+        self.textw.insert(END, msgr)
+        self.textw.configure(state=DISABLED)
 
-        self.text_widget.see(END)
+        self.textw.see(END)
 
 if __name__=="__main__":
     app = ChatApp()
