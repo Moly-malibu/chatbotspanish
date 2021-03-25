@@ -30,9 +30,9 @@ model.eval()
 bot = 'Sofy'
 def get_response(msg):
     sentence = token(msg)
-    X = bag_words(sentence, wordsAll)
-    X = X.reshape(1, X.shape[0])
-    X = torch.from_numpy(X).to(cpu)
+    answers = bag_words(sentence, wordsAll)
+    answers = answers.reshape(1, answers.shape[0])
+    answers = torch.from_numpy(answers).to(cpu)
 
     output = model(X)
     _, predicted = torch.max(output, dim=1)
