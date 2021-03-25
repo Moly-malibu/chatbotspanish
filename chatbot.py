@@ -34,7 +34,7 @@ def get_response(msg):
     answers = answers.reshape(1, answers.shape[0])
     answers = torch.from_numpy(answers).to(cpu)
 
-    output = model(X)
+    output = model(answers)
     _, predicted = torch.max(output, dim=1)
 
     tag = tags[predicted.item()]

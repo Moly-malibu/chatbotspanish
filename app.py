@@ -39,18 +39,18 @@ class ChatApp:
         bottonL = Label(self.window, bg=frontColor, height=80)
         bottonL.place(relwidth=1, rely=0.825)
 
-        self.msg_entry = Entry(bottonL, bg="#A0A80D", fg=lettercolor, font=letterF) #create entry space 
-        self.msg_entry.place(relwidth=0.74, relheight=0.06, rely=0.008, relx=0.011)
-        self.msg_entry.focus()
-        self.msg_entry.bind("<Return>", self.enter)
+        self.entermsg= Entry(bottonL, bg="#A0A80D", fg=lettercolor, font=letterF) #create entry space 
+        self.entermsg.place(relwidth=0.74, relheight=0.06, rely=0.008, relx=0.011)
+        self.entermsg.focus()
+        self.entermsg.bind("<Return>", self.enter)
 
     def enter(self, event): #integrated the bot with the windos, to get questions and answers.
-        msg = self.msg_entry.get()
+        msg = self.entermsg.get()
         self.insert_msg(msg, 'Usted')
     def insert_msg(self, msg, sender): #Insert user message
         if not msg:
             return
-        self.msg_entry.delete(0, END)
+        self.entermsg.delete(0, END)
         msgs = f"{sender}: {msg}\n\n"
         self.text_widget.configure(state=NORMAL)
         self.text_widget.insert(END, msgs)
